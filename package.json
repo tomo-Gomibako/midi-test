@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "midi": "^0.9.5",
+    "robotjs": "^0.5.1"
+  }
+}
