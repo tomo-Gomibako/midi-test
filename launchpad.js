@@ -6,7 +6,6 @@ class Launchpad {
 		this.output = new midi.output()
 		this.inputDevice = null
 		this.outputDevice = null
-		this.input.ignoreTypes(false, false, false)
 		this.keys = [
 			[0, 16, 32, 48, 64, 80, 96, 112],
 			[1, 17, 33, 49, 65, 81, 97, 113],
@@ -53,6 +52,7 @@ class Launchpad {
 		this.outputDevice = this.output.getPortName(0)
 		this.input.openPort(0)
 		this.output.openPort(0)
+		this.input.ignoreTypes(false, false, false)
 	}
 	close() {
 		this.input.closePort()
@@ -64,3 +64,5 @@ class Launchpad {
 		return n
 	}
 }
+
+module.exports = Launchpad
