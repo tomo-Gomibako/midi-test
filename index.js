@@ -27,16 +27,23 @@ input.on("message", function(deltaTime, message) {
 	if(!message[2]) return
 	console.log("m:" + message + " d:" + deltaTime)
 	console.log(String.fromCharCode(message[1]))
-	robot.typeString("Hello, World!")
-	// output.sendMessage([1, 0, 127])
+	// robot.typeString("Hello, World!")
+	output.sendMessage([144, message[1], 15])
 })
+
+// input.on("message", () => {
+// 	console.log(JSON.stringify(input, null, "\t"))
+// })
 
 input.openPort(0)
 output.openPort(0)
+output.sendMessage([176, 0, 0])
+// setTimeout(() => { output.sendMessage([144, 0, 15]) }, 1000)
 
 input.ignoreTypes(false, false, false)
 
 process.on("SIGINT", () => {
+	output.sendMessage([176, 0, 0])
 	input.closePort()
 	output.closePort()
 	process.exit(0)
