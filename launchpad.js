@@ -29,7 +29,7 @@ class Launchpad {
 		const clear = "0"
 		const copy = "0"
 		const velocity = "0" + gbin + clear + copy + rbin
-		this.output.sendMessage([144, this.keys[x][y], parseInt(velocity, 2)])
+		this.output.sendMessage([144, this.keys[y][x], parseInt(velocity, 2)])
 	}
 	on(cb) {
 		this.input.on("message", cb)

@@ -121,7 +121,8 @@ class Lifegame {
 	}
 	get states() {
 		if(!this.field) throw new Error(`Lifegame.states: field is not set`)
-		return this._transpose(this.field).map(v => v.map(w => Number(w.alive)).join(", ")).join("\n")
+		return this._transpose(this.field).map(v => v.map(w => Number(w.alive)))
+		// return this._transpose(this.field).map(v => v.map(w => Number(w.alive)).join(", ")).join("\n")
 		// return this.field.map(v => v.map(w => Number(w.alive)).join(", ")).join("\n")
 	}
 	_transpose(arr) {
