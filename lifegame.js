@@ -109,13 +109,19 @@ class Lifegame {
 	setStatus(x, y, status) {
 		if(x === undefined) throw new Error(`Lifegame.setStatus(): argument "x" is required`)
 		if(y === undefined) throw new Error(`Lifegame.setStatus(): argument "y" is required`)
+		if(typeof status !== "boolean") throw new Error(`Lifegame.setStatus(): argument "status" must be boolean`)
 		this.field[x][y].alive = status
-		return true
+		return status
+	}
+	getStatus(x, y) {
+		if(x === undefined) throw new Error(`Lifegame.setStatus(): argument "x" is required`)
+		if(y === undefined) throw new Error(`Lifegame.setStatus(): argument "y" is required`)
+		return this.field[x] && this.field[x][y] && this.field[x][y].alive
 	}
 	setRandom() {
 		for(let x in this.field) {
 			for(let y in this.field[x]) {
-				this.setStatus(x, y, Boolean((Math.random() * 2) | 0))
+				this.setStatus(x, y, Math.random() < 0.35)
 			}
 		}
 	}
